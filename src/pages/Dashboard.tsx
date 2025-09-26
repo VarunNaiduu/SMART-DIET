@@ -59,15 +59,22 @@ const samplePlans = [
 
 export const Dashboard = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState<any>(null);
   const [showAIMessage, setShowAIMessage] = useState(false);
 
   const handleProfileComplete = (profile: UserProfile) => {
     setUserProfile(profile);
   };
 
+  const handlePlanSelect = (plan: any) => {
+    setSelectedPlan(plan);
+    console.log("Selected plan:", plan);
+    // You can add more functionality here like saving to local storage or showing a success message
+  };
+
   const handleGenerateAI = () => {
     setShowAIMessage(true);
+    console.log("AI plan generation requested");
   };
 
   if (!userProfile) {
@@ -204,11 +211,18 @@ export const Dashboard = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
+                {selectedPlan && (
+                  <div className="mb-4 p-3 bg-gradient-primary rounded-lg text-center">
+                    <p className="text-sm text-primary-foreground">
+                      ✅ Selected: {selectedPlan.name}
+                    </p>
+                  </div>
+                )}
                 {samplePlans.map((plan) => (
                   <DietPlanCard
                     key={plan.id}
                     plan={plan}
-                    onSelect={setSelectedPlan}
+                    onSelect={handlePlanSelect}
                     onGenerateAI={handleGenerateAI}
                   />
                 ))}
