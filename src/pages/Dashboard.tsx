@@ -14,6 +14,7 @@ import {
   Brain
 } from "lucide-react";
 import nutritionHero from "@/assets/nutrition-hero.jpg";
+import nutritrackLogo from "@/assets/nutritrack-logo.png";
 
 interface UserProfile {
   name: string;
@@ -74,14 +75,21 @@ export const Dashboard = () => {
       <div className="min-h-screen bg-gradient-accent">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-8">
+            <div className="flex items-center justify-center mb-6">
+              <img 
+                src={nutritrackLogo} 
+                alt="NutriTrack Pro Logo" 
+                className="w-16 h-16 mr-4"
+              />
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                NutriTrack Pro
+              </h1>
+            </div>
             <img 
               src={nutritionHero} 
               alt="Healthy nutrition and diet planning" 
               className="w-full max-w-4xl mx-auto rounded-2xl shadow-glow mb-8"
             />
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-              NutriTrack Pro
-            </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Your AI-powered nutrition companion for personalized diet plans and meal tracking
             </p>
@@ -98,9 +106,16 @@ export const Dashboard = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-3xl font-bold">Welcome back, {userProfile.name}!</h1>
-              <p className="text-muted-foreground">Track your nutrition and reach your goals</p>
+            <div className="flex items-center gap-4">
+              <img 
+                src={nutritrackLogo} 
+                alt="NutriTrack Pro Logo" 
+                className="w-12 h-12"
+              />
+              <div>
+                <h1 className="text-3xl font-bold">Welcome back, {userProfile.name}!</h1>
+                <p className="text-muted-foreground">Track your nutrition and reach your goals</p>
+              </div>
             </div>
             <Button variant="outline" onClick={() => setUserProfile(null)}>
               Edit Profile
