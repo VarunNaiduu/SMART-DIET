@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://nutritrack-pro.lovable.app/sitemap.xml
